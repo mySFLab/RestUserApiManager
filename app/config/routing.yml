@@ -1,0 +1,8 @@
+lab_rest:
+    resource: "@LabRestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
