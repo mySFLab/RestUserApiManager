@@ -9,12 +9,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use LabRestBundle\Entity\User;
 use LabRestBundle\Form\UserType;
 
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations\View;
+
+
 /**
  * User controller.
  *
  * @Route("/user")
  */
-class UserController extends Controller
+class UserController extends FOSRestController
 {
     /**
      * Lists all User entities.
@@ -50,13 +54,16 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+//            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
-
-        return $this->render('user/new.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView(),
-        ));
+        $view = $this->view($user, 200)
+                ->setFormat('json')
+        ;
+        return $this->handleView($view);
+//        return $this->render('user/new.html.twig', array(
+//            'user' => $user,
+//            'form' => $form->createView(),
+//        ));
     }
 
     /**

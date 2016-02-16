@@ -38,10 +38,16 @@ class User
     /**
      * @var string
      *
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="actif", type="string", length=255, nullable=true)
      */
     private $actif;
-
 
     /**
      * Get id
@@ -120,5 +126,28 @@ class User
     public function getActif()
     {
         return $this->actif;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
