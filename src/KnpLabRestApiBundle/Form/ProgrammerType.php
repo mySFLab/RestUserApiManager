@@ -1,12 +1,12 @@
 <?php
 
-namespace LabRestBundle\Form;
+namespace KnpLabRestApiBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class ProgrammerType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,18 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('actif')
+            ->add('nickname')
+            ->add('avatarNumber', 'choice', [
+                'choices' => [
+                    "1" => "Girl",
+                    "2" => "Boy",
+                    "3" => "Boy with Cat",
+                    "4" => "Cat",
+                    "5" => "Girl purple",
+                    "6" => "Robot",
+                ]
+            ])
+            ->add('tagLine')
         ;
     }
     
@@ -27,11 +36,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'LabRestBundle\Entity\User'
+            'data_class' => 'KnpLabRestApiBundle\Entity\Programmer'
         ));
-    }
-
-    public function getName() {
-        return "supername";
     }
 }

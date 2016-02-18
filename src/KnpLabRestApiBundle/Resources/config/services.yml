@@ -1,0 +1,8 @@
+services:
+    guzzle.service.knpLab:
+        class: KnpLabRestApiBundle\Example
+        arguments:
+          - 'http://api.example.com/'
+
+        tags:
+          -  { name: acme_mailer.transport }

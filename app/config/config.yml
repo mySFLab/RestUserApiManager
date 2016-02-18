@@ -3,24 +3,35 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@LabRestBundle/Resources/config/services.yml" }
+    - { resource: "@KnpLabRestApiBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
 
+
+sensio_framework_extra:
+  view: { annotations: false }
+  router: { annotations: true }
+
 fos_rest:
+    format_listener:
+            rules:
+                prefer_extension:     false
     view:
-        formats:
-            rss: false
-            xml: false
-            json: true
-        templating_formats:
-            html: true
-        force_redirects:
-            html: true
-        failed_validation: HTTP_BAD_REQUEST
-        default_engine: twig
+        view_response_listener: true
+
+#        formats:
+#            rss: false
+#            xml: false
+#            json: true
+#        templating_formats:
+#            html: true
+#        force_redirects:
+#            html: true
+#        failed_validation: HTTP_BAD_REQUEST
+#        default_engine: twig
 
 framework:
     #esi:             ~

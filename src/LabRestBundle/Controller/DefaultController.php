@@ -19,17 +19,17 @@ class DefaultController extends Controller
         $users = $em->getRepository("LabRestBundle:User")->findAll();
         // replace this example code with whatever you need
 
-        return array('users' => $users[0]);
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $users = $em->getRepository("LabRestBundle:User")->findAll();
-//        // replace this example code with whatever you need
-//        $view = $this->view($users, 200)
-//            ->setTemplate("LabRestBundle:Default:index.html.twig")
-//            ->setTemplateVar('users')
-//            ->setFormat('json')
-//        ;
-//
-//        return $this->handleView($view);
+//        return array('users' => $users[0]);
+
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository("LabRestBundle:User")->findAll();
+        // replace this example code with whatever you need
+        $view = $this->view($users, 200)
+            ->setTemplate("LabRestBundle:Default:index.html.twig")
+            ->setTemplateVar('users')
+            ->setFormat('json')
+        ;
+
+        return $this->handleView($view);
     }
 }

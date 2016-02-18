@@ -1,3 +1,8 @@
+knp_lab_rest_api:
+    resource: "@KnpLabRestApiBundle/Controller"
+    type:     annotation
+    prefix: /api
+
 lab_rest:
     resource: "@LabRestBundle/Controller/"
     type:     annotation
@@ -6,3 +11,7 @@ lab_rest:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+users:
+  type: rest
+  resource: LabRestBundle\Controller\DefaultController

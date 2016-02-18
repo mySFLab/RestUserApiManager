@@ -47,23 +47,23 @@ class UserController extends FOSRestController
     {
         $user = new User();
         $form = $this->createForm('LabRestBundle\Form\UserType', $user);
-        $form->handleRequest($request);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-//            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
         $view = $this->view($user, 200)
                 ->setFormat('json')
         ;
-        return $this->handleView($view);
-//        return $this->render('user/new.html.twig', array(
-//            'user' => $user,
-//            'form' => $form->createView(),
-//        ));
+//        return $this->handleView($view);
+        return $this->render('user/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
     }
 
     /**

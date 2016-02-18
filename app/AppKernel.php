@@ -16,13 +16,16 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-
             // ==== FOSRestBundle + dependances ====
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
 
+            // ==== Guzzle Bundle ====
+            new Misd\GuzzleBundle\MisdGuzzleBundle(),
+
             // ==== Bundles du projet ====
             new LabRestBundle\LabRestBundle(),
+            new KnpLabRestApiBundle\KnpLabRestApiBundle(),
 
         );
 
